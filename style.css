@@ -1,0 +1,37 @@
+* {margin:0; padding:0; box-sizing:border-box;}
+html, body {height: 100%; overflow-x:hidden; font-family:sans-serif;}
+
+/* cria uma área alta para permitir rolagem */
+.scroll-area {
+  height: 400vh; /* 4 seções = 400% de altura */
+  background: transparent;
+}
+
+/* palco fixo que fica em cima de tudo */
+.stage {
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none; /* o palco não bloqueia o scroll */
+}
+
+/* seções empilhadas */
+.panel {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  font-size: 3rem;
+  color: white;
+  clip-path: circle(0% at 50% 50%);
+  -webkit-clip-path: circle(0% at 50% 50%);
+  will-change: clip-path;
+}
+
+/* cores */
+.s1 {background:#246b2f; clip-path:none; z-index:1;}
+.s2 {background:#1a4d8c;  z-index:2;}
+.s3 {background:#b18b00;  z-index:3;}
+.s4 {background:#9c2a2a;  z-index:4;}
+
+
