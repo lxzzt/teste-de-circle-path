@@ -1,29 +1,30 @@
 gsap.registerPlugin(ScrollTrigger);
 
-/*
-Agora o scroll é normal (a .scroll-area cria altura),
-e as animações são controladas pelo progresso do ScrollTrigger.
-*/
-const timeline = gsap.timeline({
+// timeline principal
+const tl = gsap.timeline({
   scrollTrigger: {
     trigger: ".scroll-area",
     start: "top top",
     end: "bottom bottom",
-    scrub: true,
+    scrub: 1.5, // suaviza a relação entre scroll e animação
+    pin: false,
   }
 });
 
-// cada trecho ocupa 1/3 do scroll total (3 trocas)
-timeline.fromTo(".s2",
-  { clipPath: "circle(0% at 50% 50%)" },
-  { clipPath: "circle(150% at 50% 50%)", ease: "none", duration: 1 }
-);
-timeline.fromTo(".s3",
-  { clipPath: "circle(0% at 50% 50%)" },
-  { clipPath: "circle(150% at 50% 50%)", ease: "none", duration: 1 }
-);
-timeline.fromTo(".s4",
-  { clipPath: "circle(0% at 50% 50%)" },
-  { clipPath: "circle(150% at 50% 50%)", ease: "none", duration: 1 }
-);
+// Configura fade-in do texto e expansão circular
+const sections = [".s2", ".s3", ".s4"];
+sections.forEach((sec, i) => {
+  tl.fromTo(sec,
+    { clipPath: "circle(0% at 50% 50%)" },
+    {
+      clipPath: "circle(150% at 50% 50%)",
+      ease: "power2.out",
+      duration: 1,
+      onStart: () => document.querySelector(sec).classList.add("active"),
+      onReverseComplete: () => document.querySelector(sec).classList.remove("active")
+    }
+  );
+});
 
+// Ativa a primeira seção imediatamente
+document.querySelector(".s1").classList.add("active");
