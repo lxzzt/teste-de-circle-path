@@ -6,10 +6,11 @@ const tl = gsap.timeline({
     trigger: ".scroll-area",
     start: "top top",
     end: "bottom bottom",
-    scrub: 1.5, // suaviza a relação entre scroll e animação
+    scrub: 3, // suaviza a relação entre scroll e animação
     pin: false,
   }
 });
+
 
 // Configura fade-in do texto e expansão circular
 const sections = [".s2", ".s3", ".s4"];

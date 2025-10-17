@@ -40,7 +40,7 @@ html, body {
   transition: none;
 }
 
-.s1 { background: #246b2f; clip-path: none; z-index: 1; }
+.s1 { background: #12b32a; clip-path: none; z-index: 1; }
 .s2 { background: #1a4d8c; z-index: 2; }
 .s3 { background: #b18b00; z-index: 3; }
 .s4 { background: #9c2a2a; z-index: 4; }
